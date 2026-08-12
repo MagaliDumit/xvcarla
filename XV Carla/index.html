@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV - Carla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="card-container">
+
+    <div class="card-content">
+
+    <!-- PORTADA -->
+    <header class="section header-section">
+      <div class="glass-card">
+        <p class="subtitle">MIS 15 AÑOS</p>
+        <h1 class="title">Carla</h1>
+        <div class="divider">✦</div>
+        <p class="quote">"Hay momentos en la vida que son inolvidables, pero compartirlos con las personas que más querés los hace eternos."</p>
+      </div>
+    </header>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="section countdown-section">
+      <div class="glass-card">
+        <h2>Faltan</h2>
+        <div id="timer" class="timer-grid">
+          <div class="time-box"><span class="time-num" id="days">0</span><span class="time-label">Días</span></div>
+          <div class="time-sep">:</div>
+          <div class="time-box"><span class="time-num" id="hours">0</span><span class="time-label">Horas</span></div>
+          <div class="time-sep">:</div>
+          <div class="time-box"><span class="time-num" id="minutes">0</span><span class="time-label">Min</span></div>
+        </div>
+        <p class="date-note">20 de noviembre de 2026</p>
+      </div>
+    </section>
+
+    <!-- FIESTA -->
+    <section class="section">
+      <div class="glass-card">
+        <h2>La Fiesta</h2>
+        <p class="highlight">Casa Praga</p>
+        <p class="address">Leandro N. Alem 345, Ramos Mejía</p>
+        <p class="address">B1704 - Provincia de Buenos Aires</p>
+        <p class="time">de 21:30 a 05:30 hs</p>
+        <div class="btn-group">
+          <a href="https://maps.app.goo.gl/P2sSq1vg4Mo1LZybA" target="_blank" rel="noopener" class="btn">Ver Mapa</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="section">
+      <div class="glass-card">
+        <h2>Código de Vestimenta</h2>
+        <p class="highlight">Etiqueta Elegante</p>
+        <p class="note">Reservados exclusivamente para la quinceañera:</p>
+        <div class="swatches-grid">
+          <img src="telas/1.png" alt="Champagne" class="swatch-img">
+          <img src="telas/2.png" alt="Rosa Dust" class="swatch-img">
+          <img src="telas/4.png" alt="Tono XV" class="swatch-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ASISTENCIA & MÚSICA -->
+    <section class="section">
+      <div class="glass-card">
+        <h2>Asistencia &amp; Música</h2>
+        <p class="text">Confirmá tu presencia, contanos tus restricciones alimentarias y sugerí las canciones que no pueden faltar.</p>
+        <div class="btn-group">
+          <a href="https://forms.gle/iZHhxgtPRguizocL7" target="_blank" rel="noopener" class="btn btn-primary">Confirmar Asistencia</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOTOS -->
+    <section class="section">
+      <div class="glass-card">
+        <h2>Nuestros Momentos</h2>
+        <p class="text">Subí los recuerdos de la noche a nuestro álbum compartido y reviví cada momento de la historia.</p>
+        <div class="btn-group">
+          <a href="https://photos.app.goo.gl/KrNS84Rc8kzWaV568" target="_blank" rel="noopener" class="btn">Ir al Álbum</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGALO -->
+    <section class="section">
+      <div class="glass-card">
+        <h2>Sugerencia de Regalo</h2>
+        <p class="text">El mejor regalo es tu presencia. Si además querés hacerme un obsequio, te dejo mis datos:</p>
+        <details class="alias-drop">
+          <summary class="alias-summary">Ver mi alias</summary>
+          <div class="alias-box">
+            <p><strong>Alias:</strong> holis.mi.sol <button type="button" class="copy-btn" data-copy="holis.mi.sol">Copiar</button></p>
+            <p><strong>CBU / CVU:</strong> <!-- Tu CBU o CVU --></p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <footer class="section footer-section">
+      <div class="glass-card">
+        <p class="final-text">¡Te espero para festejar juntos una noche inolvidable!</p>
+        <div class="divider">✦</div>
+        <p class="signature">Carla</p>
+      </div>
+    </footer>
+
+    </div><!-- /card-content -->
+  </main>
+
+  <!-- REPRODUCTOR DE MÚSICA FLOTANTE -->
+  <div class="music-widget">
+    <audio id="music-player" loop>
+      <source src="Veo%20en%20ti%20la%20luz.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+    <button id="music-toggle" class="music-btn" aria-label="Reproducir música"></button>
+  </div>
+
+  <script>
+    // CONFIGURACIÓN DE LA FECHA DEL EVENTO
+    const eventDate = new Date("2026-11-20T21:30:00").getTime(); // Cambiar por la fecha real
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "¡Llegó el gran día!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // REPRODUCTOR DE MÚSICA
+    const player = document.getElementById("music-player");
+    const toggle = document.getElementById("music-toggle");
+
+    toggle.addEventListener("click", function () {
+      if (player.paused) {
+        player.play();
+        toggle.classList.add("playing");
+      } else {
+        player.pause();
+        toggle.classList.remove("playing");
+      }
+    });
+
+    // COPIAR ALIAS
+    document.querySelectorAll(".copy-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const value = btn.dataset.copy;
+        navigator.clipboard.writeText(value).then(function () {
+          btn.textContent = "¡Copiado!";
+          setTimeout(function () { btn.textContent = "Copiar"; }, 2000);
+        });
+      });
+    });
+  </script>
+
+  <!-- CANVAS DE FONDO (z-index: 1 para quedar detrás de la tarjeta) -->
+  <canvas id="sparkles-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('sparkles-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // Paleta de Rosas y Blancos
+      const goldPalette = ['#FFD3E0', '#FFB9CC', '#FFCDDB', '#FFE6EE', '#FFF1F6', '#FFFFFF'];
+      const particles = [];
+      const count = 75;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3.5 + 1.5,
+          color: goldPalette[Math.floor(Math.random() * goldPalette.length)],
+          speedY: Math.random() * 1.2 + 0.6,
+          speedX: Math.random() * 0.6 - 0.3,
+          opacity: Math.random() * 0.8 + 0.2,
+          rotation: Math.random() * 360,
+          rotSpeed: Math.random() * 3 - 1.5,
+          shape: Math.random() > 0.4 ? 'star' : 'diamond'
+        });
+      }
+
+      function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+        let rot = (Math.PI / 2) * 3;
+        let step = Math.PI / spikes;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - outerRadius);
+        for (let i = 0; i < spikes; i++) {
+          let x = cx + Math.cos(rot) * outerRadius;
+          let y = cy + Math.sin(rot) * outerRadius;
+          ctx.lineTo(x, y);
+          rot += step;
+
+          x = cx + Math.cos(rot) * innerRadius;
+          y = cy + Math.sin(rot) * innerRadius;
+          ctx.lineTo(x, y);
+          rot += step;
+        }
+        ctx.lineTo(cx, cy - outerRadius);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      function drawDiamond(cx, cy, size) {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - size * 1.5);
+        ctx.lineTo(cx + size, cy);
+        ctx.lineTo(cx, cy + size * 1.5);
+        ctx.lineTo(cx - size, cy);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.fillStyle = p.color;
+
+          // Efecto de resplandor brillante (Rosa / Blanco)
+          ctx.shadowColor = '#FFD3E0';
+          ctx.shadowBlur = 8;
+
+          p.y += p.speedY;
+          p.x += Math.sin(p.y * 0.01) + p.speedX;
+          p.rotation += p.rotSpeed;
+
+          if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+          }
+
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+
+          if (p.shape === 'diamond') {
+            drawDiamond(0, 0, p.size);
+          } else {
+            drawStar(0, 0, 4, p.size * 2, p.size * 0.6);
+          }
+
+          ctx.restore();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+
+</body>
+</html>
