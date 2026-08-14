@@ -425,14 +425,27 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../ChatGPT Image 13 ago 2026, 02_00_48 a.m..png") no-repeat center center / cover;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   padding: 5vh 16px;
   z-index: 99999;
+  overflow: hidden;
   transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Fondo del sobre: misma <img> que la portada para que se renderice idéntico */
+.overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  transform: translateZ(0);
 }
 
 .envelope-title {
@@ -464,6 +477,8 @@ h2 {
 }
 
 .envelope-container {
+  position: relative;
+  z-index: 1;
   cursor: pointer;
   text-align: center;
 }
@@ -472,10 +487,35 @@ h2 {
   position: relative;
   width: 480px;
   height: 380px;
-  background: #e2a697;
+  background: #d8867c;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   perspective: 800px;
+}
+
+/* Ornamentos dorados con florituras en los bordes */
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns%3D'http%3A//www.w3.org/2000/svg' width%3D'480' height%3D'380' viewBox%3D'0 0 480 380'%3E%0A%3Cpath d%3D'M4 198 L240 2 L476 198' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1.6' opacity%3D'0.85'/%3E%0A%3Cpath d%3D'M4 182 L240 378 L476 182' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1.6' opacity%3D'0.85'/%3E%0A%3Cpath d%3D'M10 10 H470 V370 Q470 378 462 378 H18 Q10 378 10 370 Z' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1.4' opacity%3D'0.85'/%3E%0A%3Cpath d%3D'M8 62 C8 30 30 8 62 8' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'2' opacity%3D'0.95'/%3E%0A%3Cpath d%3D'M8 78 C8 38 38 8 78 8' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1' opacity%3D'0.7'/%3E%0A%3Cpath d%3D'M472 62 C472 30 450 8 418 8' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'2' opacity%3D'0.95'/%3E%0A%3Cpath d%3D'M472 78 C472 38 442 8 402 8' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1' opacity%3D'0.7'/%3E%0A%3Cpath d%3D'M8 318 C8 350 30 372 62 372' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'2' opacity%3D'0.95'/%3E%0A%3Cpath d%3D'M8 302 C8 342 38 372 78 372' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1' opacity%3D'0.7'/%3E%0A%3Cpath d%3D'M472 318 C472 350 450 372 418 372' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'2' opacity%3D'0.95'/%3E%0A%3Cpath d%3D'M472 302 C472 342 442 372 402 372' fill%3D'none' stroke%3D'%23cfae54' stroke-width%3D'1' opacity%3D'0.7'/%3E%0A%3Ccircle cx%3D'8' cy%3D'8' r%3D'2.5' fill%3D'%23cfae54'/%3E%0A%3Ccircle cx%3D'472' cy%3D'8' r%3D'2.5' fill%3D'%23cfae54'/%3E%0A%3Ccircle cx%3D'8' cy%3D'372' r%3D'2.5' fill%3D'%23cfae54'/%3E%0A%3Ccircle cx%3D'472' cy%3D'372' r%3D'2.5' fill%3D'%23cfae54'/%3E%0A%3C/svg%3E");
+  background-size: 480px 380px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Textura de papel: ruido fino en tonos rosados */
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns%3D'http%3A//www.w3.org/2000/svg' width%3D'120' height%3D'120'%3E%3Cfilter id%3D'g'%3E%3CfeTurbulence type%3D'fractalNoise' baseFrequency%3D'0.85' numOctaves%3D'4' stitchTiles%3D'stitch'/%3E%3CfeColorMatrix type%3D'matrix' values%3D'0 0 0 0 0.95 0 0 0 0 0.70 0 0 0 0 0.76 0 0 0 0.60 0'/%3E%3C/filter%3E%3Crect width%3D'120' height%3D'120' filter%3D'url%28%23g%29'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  mix-blend-mode: multiply;
+  opacity: 0.10;
+  border-radius: 0 0 10px 10px;
+  pointer-events: none;
+  z-index: 4;
 }
 
 .flap {
@@ -486,7 +526,7 @@ h2 {
   height: 0;
   border-left: 240px solid transparent;
   border-right: 240px solid transparent;
-  border-top: 195px solid #c58373;
+  border-top: 195px solid #cd7468;
   transform-origin: top;
   transition: transform 0.6s ease-in-out, z-index 0.6s;
   z-index: 4;
@@ -498,9 +538,9 @@ h2 {
   left: 0;
   width: 0;
   height: 0;
-  border-left: 240px solid #f5d0c5;
-  border-right: 240px solid #f5d0c5;
-  border-bottom: 190px solid #e2a697;
+  border-left: 240px solid #e1b1a4;
+  border-right: 240px solid #e1b1a4;
+  border-bottom: 190px solid #ce7569;
   border-radius: 0 0 10px 10px;
   z-index: 3;
 }
@@ -535,8 +575,8 @@ h2 {
   top: 145px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
+  width: 94.5px;
+  height: 94.5px;
   z-index: 5;
   transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
 }
