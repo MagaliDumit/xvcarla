@@ -6,10 +6,25 @@
   <title>Mis XV - Carla</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Cinzel:wght@400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- SOBRE DE BIENVENIDA -->
+<div id="envelope-overlay">
+  <h1 class="envelope-title">Mis 15 Carla</h1>
+  <div class="envelope-container" onclick="openEnvelope()">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="pocket"></div>
+      <div class="heart-seal">
+        <img src="ChatGPT Image 13 ago 2026, 01_12_37 a.m..png" alt="Sello" class="seal-img">
+      </div>
+    </div>
+    <p class="click-hint">Toca el sobre para abrir</p>
+  </div>
+</div>
 
   <main class="card-container">
 
@@ -17,11 +32,11 @@
 
     <!-- PORTADA -->
     <header class="section header-section">
-      <div class="glass-card">
+      <div class="glass-card glass-card--full">
         <p class="subtitle">MIS 15 AÑOS</p>
         <h1 class="title">Carla</h1>
         <div class="divider">✦</div>
-        <p class="quote">"Hay momentos en la vida que son inolvidables, pero compartirlos con las personas que más querés los hace eternos."</p>
+        <p class="quote">"Hay momentos en la vida que son inolvidables, pero compartirlos con las personas que más quiero los hace eternos."</p>
       </div>
     </header>
 
@@ -36,7 +51,7 @@
           <div class="time-sep">:</div>
           <div class="time-box"><span class="time-num" id="minutes">0</span><span class="time-label">Min</span></div>
         </div>
-        <p class="date-note">20 de noviembre de 2026</p>
+        <p class="date-note">31 de octubre de 2026</p>
       </div>
     </section>
 
@@ -58,12 +73,11 @@
     <section class="section">
       <div class="glass-card">
         <h2>Código de Vestimenta</h2>
-        <p class="highlight">Etiqueta Elegante</p>
-        <p class="note">Reservados exclusivamente para la quinceañera:</p>
+        <p class="highlight">Dresscode Elegante</p>
+        <p class="note">Tratar de evitar estos colores</p>
         <div class="swatches-grid">
-          <img src="telas/1.png" alt="Champagne" class="swatch-img">
+          <img src="telas/1.png" alt="Rosa bebe" class="swatch-img">
           <img src="telas/2.png" alt="Rosa Dust" class="swatch-img">
-          <img src="telas/4.png" alt="Tono XV" class="swatch-img">
         </div>
       </div>
     </section>
@@ -83,7 +97,7 @@
     <section class="section">
       <div class="glass-card">
         <h2>Nuestros Momentos</h2>
-        <p class="text">Subí los recuerdos de la noche a nuestro álbum compartido y reviví cada momento de la historia.</p>
+        <p class="text">Subí los recuerdos de la noche a nuestro álbum compartido y para revivir cada momento de la historia.</p>
         <div class="btn-group">
           <a href="https://photos.app.goo.gl/KrNS84Rc8kzWaV568" target="_blank" rel="noopener" class="btn">Ir al Álbum</a>
         </div>
@@ -98,19 +112,20 @@
         <details class="alias-drop">
           <summary class="alias-summary">Ver mi alias</summary>
           <div class="alias-box">
-            <p><strong>Alias:</strong> holis.mi.sol <button type="button" class="copy-btn" data-copy="holis.mi.sol">Copiar</button></p>
-            <p><strong>CBU / CVU:</strong> <!-- Tu CBU o CVU --></p>
+            <p><strong>Alias:</strong> vsncarla <button type="button" class="copy-btn" data-copy="vsncarla">Copiar</button></p>
+            <p><strong>Titular:</strong> Carla Martina Grasso</p>
           </div>
         </details>
       </div>
     </section>
 
-    <!-- CIERRE -->
+    <!-- CIERRE de MIS XV AL FINAL -->
     <footer class="section footer-section">
-      <div class="glass-card">
+      <div class="glass-card glass-card--full">
         <p class="final-text">¡Te espero para festejar juntos una noche inolvidable!</p>
         <div class="divider">✦</div>
-        <p class="signature">Carla</p>
+        <p class="subtitle">MIS 15 AÑOS</p>
+        <h1 class="title">Carla</h1>
       </div>
     </footer>
 
@@ -120,7 +135,7 @@
   <!-- REPRODUCTOR DE MÚSICA FLOTANTE -->
   <div class="music-widget">
     <audio id="music-player" loop>
-      <source src="Veo%20en%20ti%20la%20luz.mp3" type="audio/mpeg">
+      <source src="Kali%20Uchis%20-%20All%20I%20Can%20Say.mp3" type="audio/mpeg">
       Tu navegador no soporta audio.
     </audio>
     <button id="music-toggle" class="music-btn" aria-label="Reproducir música"></button>
@@ -128,14 +143,15 @@
 
   <script>
     // CONFIGURACIÓN DE LA FECHA DEL EVENTO
-    const eventDate = new Date("2026-11-20T21:30:00").getTime(); // Cambiar por la fecha real
+    const eventDate = new Date("2026-08-12T20:45:00").getTime(); 
+    //const eventDate = new Date("2026-11-20T21:30:00").getTime(); // Cambiar por la fecha real
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = eventDate - now;
 
       if (distance < 0) {
-        document.getElementById("timer").innerHTML = "¡Llegó el gran día!";
+        document.getElementById("timer").innerHTML = "¡Empezó la fiesta!";
         return;
       }
 
@@ -283,6 +299,28 @@
       animate();
     })();
   </script>
+
+<script>
+  function openEnvelope() {
+    const envelope = document.querySelector('.envelope');
+    const overlay = document.getElementById('envelope-overlay');
+
+    if (!envelope.classList.contains('open')) {
+      envelope.classList.add('open');
+
+      // Al abrir, la portada siempre es lo primero que se ve
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+      // Espera a que termine la animación para desvanecer el sobre y mostrar el sitio
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 1000);
+      }, 1200);
+    }
+  }
+</script>
 
 </body>
 </html>
