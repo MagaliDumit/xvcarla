@@ -308,6 +308,9 @@
     if (!envelope.classList.contains('open')) {
       envelope.classList.add('open');
 
+      // Al abrir, la portada siempre es lo primero que se ve
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
       // Espera a que termine la animación para desvanecer el sobre y mostrar el sitio
       setTimeout(() => {
         overlay.style.opacity = '0';
